@@ -19,10 +19,10 @@ namespace Chess2_redo
 
         public virtual bool move(int newx, int newy) 
         {
-            Console.WriteLine("before the if loop" + newx + " " + newy);
+            //Console.WriteLine("before the if loop" + newx + " " + newy);
             if (this.check_move(newx, newy) == true)
             {   
-                Console.WriteLine("in the if loop"+ newx+" "+newy);
+                //Console.WriteLine("in the if loop"+ newx+" "+newy);
                 MainClass.game.board.game_board[x, y] = null;
                 MainClass.game.board.game_board[newx, newy] = this;
 

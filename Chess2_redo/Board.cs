@@ -67,7 +67,7 @@ namespace Chess2_redo
         //test writing the result to a txt file
         public void writeToTxt()
         {
-            string filePath = @"C:\Users\Pengb\Documents\output.txt"; ;
+            string filePath = @"C:\Users\Pengbo Xue\Documents\output.txt"; ;
             using (StreamWriter outputFile = new StreamWriter(filePath))
             {
                 outputFile.WriteLine(boardJsonString);

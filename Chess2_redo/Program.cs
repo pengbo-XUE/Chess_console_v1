@@ -3,14 +3,19 @@ using System.Text.Json;
 
 namespace Chess2_redo
 {
+    //program will recive a string which is turned into an array 
+    //array[0] is the x cord
+    //array[1] is the y cord
+    //array [2] is the piece that is to be moved
     class MainClass
     {       
         
-        public static string userInput = "move";
+        public static string userInput;
         public static Piece cunrrentPiece;
         public static int inputx;
         public static int inputy;
         public static Game game;
+
         public static bool gameOver { get; set; } = false;
 
 
@@ -18,57 +23,35 @@ namespace Chess2_redo
         {   
             //creates a new game
             game = new Game();
-           
-
-            //console.logs the json ary
-          /*  foreach (var i in game.board.boardJson)
-            {
-                Console.WriteLine(i);
-            }*/
-
-            //hard code cunrrent piece DELETE LATER
+     
             setCurrentPiece(game.br1);
-
-            //hard code move test DELETE LATER
-            
-            
-
-            //hard code set cord DELETE LATER
             setCord(0, 2);
-            //hard coded update one D ary
+      
             game.board.updateOneDAryAndList();
-
-            //Console.WriteLine(game.br1.move(0,7));
-
-            //test turning obj in to JSON DELETE LATER
-           
             
+            PipeServer pipe = new PipeServer();
 
-                 switch (userInput)
-                 {
-                     case "move":
-                         //Console.WriteLine(cunrrentPiece);
-                         cunrrentPiece.move(inputx, inputy);
-                         if (CheckWin.check())
-                         {
-                             gameOver = true;
-                         }
+            while (!gameOver) {
 
-                        
-                         break;
-                     case "reset":
-                         game = new Game();
-                         break;
+                pipe.reciveData();
+                if (userInput != null) 
+                {   
+                    SwitchBoard.handelRequest(userInput);
+                    userInput = null;
+                    pipe.sendData("Hello");
+                }
+                //await pipe.reciveData();
+                
+            }
 
-                 }
-
-            game.board.writeToTxt();
         }
 
         public static void setCurrentPiece(Piece p) 
         {
             cunrrentPiece = p;
         }
+
+        
 
         //gets the position of a piece
         public static string getPiecePosition(Piece p)

@@ -49,7 +49,7 @@ namespace Chess2_redo
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Data Source=LAPTOP-Q83UTTM9\SQLEXPRESS;Initial Catalog=BoardDb;Integrated Security=True");
+            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-BC5EN6M\SQLEXPRESS;Initial Catalog=Chess_Db1;Integrated Security=True");
         }
         
     }
